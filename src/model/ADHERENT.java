@@ -39,6 +39,9 @@ public class ADHERENT {
 	public void setListLivre(ArrayList<LIVRE> listLivre) {
 		this.listLivre = listLivre;
 	}
+	public void addListLivre(LIVRE livre) {
+		this.listLivre.add(null);
+	}
 	
 	public ADHERENT(String num, String nom, String prenom, String email, ArrayList<LIVRE> listLivre) {
 		super();

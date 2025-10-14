@@ -8,9 +8,34 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class model {
-	private ArrayList<LIVRE> listLivre = new ArrayList<LIVRE>();
+	private static ArrayList<LIVRE> listLivre = new ArrayList<LIVRE>();
 	private ArrayList<AUTEUR> listAuteur = new ArrayList<AUTEUR>();
 	private ArrayList<ADHERENT> listAdherent = new ArrayList<ADHERENT>();
+	
+	public static ArrayList<LIVRE> getListLivre() {
+		return listLivre;
+	}
+
+	public void setListLivre(ArrayList<LIVRE> listLivre) {
+		this.listLivre = listLivre;
+	}
+
+	public ArrayList<AUTEUR> getListAuteur() {
+		return listAuteur;
+	}
+
+	public void setListAuteur(ArrayList<AUTEUR> listAuteur) {
+		this.listAuteur = listAuteur;
+	}
+
+	public ArrayList<ADHERENT> getListAdherent() {
+		return listAdherent;
+	}
+
+	public void setListAdherent(ArrayList<ADHERENT> listAdherent) {
+		this.listAdherent = listAdherent;
+	}
+	
 	private Connection conn;
 	
 	private String bdd = "ap2";
@@ -37,6 +62,7 @@ public class model {
 		}
 		return null;
 	}
+	
 	public ADHERENT findAdherentByNum(String num) {
 		for (ADHERENT a : listAdherent) {
 			if (a.getNum().equals(num)) {
@@ -45,6 +71,16 @@ public class model {
 		}
 		return null;
 	}
+	
+	public LIVRE findLivreByISBN(String ISBN) {
+		for (LIVRE l : listLivre) {
+			if (l.getIsbn().equals(ISBN)) {
+				return l;
+			}
+		}
+		return null;
+	}
+	
 	public void getall() throws SQLException, ClassNotFoundException {
 		listLivre.clear();
 		listAuteur.clear();
@@ -85,6 +121,16 @@ public class model {
 				l.setEmprunteur(findAdherentByNum(resultats.getString(4)));
 			}
 			listLivre.add(l);
+		}
+		
+		//On affecte les livres aux adherents
+		for (ADHERENT a : listAdherent) {
+			a.setListLivre(new ArrayList<LIVRE>());
+			for (LIVRE l : listLivre) {
+				if (l.getEmprunteur().getNum().equals(a.getNum())) {
+					a.addListLivre(l);
+				}
+			}
 		}
 	}
 }
