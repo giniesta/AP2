@@ -1,12 +1,10 @@
 package view;
 
-import java.awt.EventQueue;
 import java.sql.SQLException;
 
 import javax.swing.JFrame;
 
 import controller.mainMVC;
-import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -39,17 +37,23 @@ public class View_Accueil {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 1300, 700);
+		frame.setBounds(100, 100, 573, 321);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JButton btnCatalogue = new JButton("catalogue");
 		btnCatalogue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				View_Catalogue vc = new View_Catalogue();
+				frame.dispose();
+				try {
+					new View_Catalogue();
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
-		btnCatalogue.setBounds(434, 196, 149, 68);
+		btnCatalogue.setBounds(203, 116, 149, 68);
 		frame.getContentPane().add(btnCatalogue);
 		
 		JButton btnRendre = new JButton("rendre un livre");
@@ -58,7 +62,7 @@ public class View_Accueil {
 				
 			}
 		});
-		btnRendre.setBounds(235, 229, 132, 27);
+		btnRendre.setBounds(12, 149, 132, 27);
 		frame.getContentPane().add(btnRendre);
 		
 		JButton btnConnecter = new JButton("se connecter");
@@ -67,25 +71,29 @@ public class View_Accueil {
 				
 			}
 		});
-		btnConnecter.setBounds(630, 229, 124, 27);
+		btnConnecter.setBounds(409, 149, 132, 27);
 		frame.getContentPane().add(btnConnecter);
 		
 		txtRendre = new JTextField();
-		txtRendre.setBounds(241, 196, 114, 21);
+		txtRendre.setBounds(18, 116, 114, 21);
 		frame.getContentPane().add(txtRendre);
 		txtRendre.setColumns(10);
 		
 		txtConnecter = new JTextField();
 		txtConnecter.setColumns(10);
-		txtConnecter.setBounds(640, 196, 114, 21);
+		txtConnecter.setBounds(417, 116, 114, 21);
 		frame.getContentPane().add(txtConnecter);
 		
 		JLabel lblIsbnDuLivre = new JLabel("ISBN DU LIVRE");
-		lblIsbnDuLivre.setBounds(251, 167, 104, 17);
+		lblIsbnDuLivre.setBounds(28, 87, 104, 17);
 		frame.getContentPane().add(lblIsbnDuLivre);
 		
 		JLabel lblNAdherent = new JLabel("N° ADHERENT");
-		lblNAdherent.setBounds(650, 167, 104, 17);
+		lblNAdherent.setBounds(427, 87, 104, 17);
 		frame.getContentPane().add(lblNAdherent);
+		
+		JLabel lblBonjour = new JLabel("Bonjour, ");
+		lblBonjour.setBounds(184, 28, 195, 39);
+		frame.getContentPane().add(lblBonjour);
 	}
 }

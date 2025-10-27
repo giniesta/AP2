@@ -7,6 +7,7 @@ public class AUTEUR {
 	private String nom;
 	private String prenom;
 	private Date dateNaissance;
+	private String description;
 	
 	public String getNum() {
 		return num;
@@ -31,6 +32,12 @@ public class AUTEUR {
 	}
 	public void setDateNaissance(Date dateNaissance) {
 		this.dateNaissance = dateNaissance;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 	public AUTEUR(String num, String nom, String prenom, Date dateNaissance) {
