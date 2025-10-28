@@ -15,7 +15,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 import javax.swing.AbstractListModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 
 public class View_Catalogue {
 
@@ -72,21 +74,16 @@ public class View_Catalogue {
 		btnRetour.setBounds(502, 13, 84, 24);
 		frame.getContentPane().add(btnRetour);
 		
-		JList listCatalogue = new JList();
-		listCatalogue.setModel(new AbstractListModel() {
-			String[] values = new String[] {"test; ", "test2;", "test; ", "test2;", "test; ", "test2;", "test; ", "test2;", "test; ", "test2;", "test; ", "test2;", "test; ", "test2;", "test; ", "test2;", "test; ", "test2;", "test; ", "test2;", "test; ", "test2;", "test; ", "test2;", "test; ", "test2;", "test; ", "test2;", "test; ", "test2;", "test; ", "test2;", "test; ", "test2;", "test; ", "test2;"};
-			public int getSize() {
-				return values.length;
-			}
-			public Object getElementAt(int index) {
-				return values[index];
-			}
-		});
-		listCatalogue.setBounds(52, 48, 274, 281);
-		frame.getContentPane().add(listCatalogue);
+		JScrollPane scrollPaneCatalogue = new JScrollPane();
+		scrollPaneCatalogue.setBounds(10, 13, 258, 332);
+		frame.getContentPane().add(scrollPaneCatalogue);
 		
-		JScrollBar scrollBar = new JScrollBar();
-		scrollBar.setBounds(310, 40, 16, 289);
-		frame.getContentPane().add(scrollBar);
+		DefaultListModel<String> model = new DefaultListModel<>();
+		for (LIVRE livre : mainMVC.getM().getListLivre()) {
+			model.addElement(livre.getTitre());
+		}
+
+		JList<String> listCatalogue = new JList<>(model);
+		scrollPaneCatalogue.setViewportView(listCatalogue);
 	}
 }

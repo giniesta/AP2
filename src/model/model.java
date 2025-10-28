@@ -8,11 +8,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class model {
-	private static ArrayList<LIVRE> listLivre = new ArrayList<LIVRE>();
+	private  ArrayList<LIVRE> listLivre = new ArrayList<LIVRE>();
 	private ArrayList<AUTEUR> listAuteur = new ArrayList<AUTEUR>();
 	private ArrayList<ADHERENT> listAdherent = new ArrayList<ADHERENT>();
 	
-	public static ArrayList<LIVRE> getListLivre() {
+	public ArrayList<LIVRE> getListLivre() {
 		return listLivre;
 	}
 
