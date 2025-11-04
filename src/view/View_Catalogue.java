@@ -55,7 +55,7 @@ public class View_Catalogue {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 612, 392);
+		frame.setBounds(100, 100, 550, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -71,11 +71,11 @@ public class View_Catalogue {
 				}
 			}
 		});
-		btnRetour.setBounds(502, 13, 84, 24);
+		btnRetour.setBounds(442, 13, 84, 24);
 		frame.getContentPane().add(btnRetour);
 		
 		JScrollPane scrollPaneCatalogue = new JScrollPane();
-		scrollPaneCatalogue.setBounds(10, 13, 258, 332);
+		scrollPaneCatalogue.setBounds(10, 13, 258, 240);
 		frame.getContentPane().add(scrollPaneCatalogue);
 		
 		DefaultListModel<String> model = new DefaultListModel<>();
